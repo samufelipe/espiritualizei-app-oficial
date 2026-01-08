@@ -1,8 +1,7 @@
-
 import React, { useState, useEffect, useRef } from 'react';
-import { CommunityPost, UserProfile } from '../types';
+import { CommunityPost, UserProfile } from '@/types';
 import { Heart, MessageCircle, Share2, Image, Send, Loader2, MoreVertical, X, Clock, Filter, Quote } from 'lucide-react';
-import { createCommunityPost, fetchCommunityPosts, togglePostLike, addComment, uploadImage } from '../services/databaseService';
+import { createCommunityPost, fetchCommunityPosts, togglePostLike, addComment, uploadImage } from '@/services/databaseService';
 import CommentModal from './CommentModal';
 
 interface CommunityFeedProps {

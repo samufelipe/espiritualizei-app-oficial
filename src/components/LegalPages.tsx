@@ -1,6 +1,4 @@
-
 import React from 'react';
-// Fixed typo: changed 'lucide-center' to 'lucide-react'
 import { ArrowLeft, Shield, FileText, Heart, Mail, MessageSquare, MapPin, Send } from 'lucide-react';
 import BrandLogo from './BrandLogo';
 
@@ -27,7 +25,6 @@ const PageLayout: React.FC<{ title: string; children: React.ReactNode }> = ({ ti
   </div>
 );
 
-// --- TERMOS DE USO ---
 export const TermsPage: React.FC = () => (
   <PageLayout title="Termos de Uso">
     <div className="prose prose-lg prose-slate dark:prose-invert max-w-none">
@@ -43,7 +40,6 @@ export const TermsPage: React.FC = () => (
   </PageLayout>
 );
 
-// --- POLÍTICA DE PRIVACIDADE ---
 export const PrivacyPage: React.FC = () => (
   <PageLayout title="Política de Privacidade">
     <div className="prose prose-lg prose-slate dark:prose-invert max-w-none">
@@ -53,7 +49,6 @@ export const PrivacyPage: React.FC = () => (
   </PageLayout>
 );
 
-// --- SOBRE NÓS ---
 export const AboutPage: React.FC = () => (
   <PageLayout title="Sobre Nós">
     <div className="text-center md:text-left space-y-10">
@@ -62,7 +57,6 @@ export const AboutPage: React.FC = () => (
   </PageLayout>
 );
 
-// --- CONTATO ---
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = React.useState({
     name: '',
