@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from 'react';
-import { LeaderboardData, UserProfile } from '../types';
-import { fetchLeaderboard } from '../services/databaseService';
+import { LeaderboardData, UserProfile, LeaderboardEntry } from '@/types';
+import { fetchLeaderboard } from '@/services/databaseService';
 import { Trophy, Flame, Zap, Crown, Info, X, ChevronUp, Star, ShieldCheck, Heart, User } from 'lucide-react';
 
 interface LeaderboardWidgetProps {
@@ -25,15 +24,12 @@ const LeaderboardWidget: React.FC<LeaderboardWidgetProps> = ({ user }) => {
 
   const currentList = activeTab === 'intercessors' ? data?.intercessors : data?.pilgrims;
   
-  // Extract Top 3 for Podium Visualization
   const top1 = currentList?.[0];
   const top2 = currentList?.[1];
   const top3 = currentList?.[2];
   
-  // The rest of the list
   const others = currentList?.slice(3) || [];
 
-  // FIND CURRENT USER (Mock Logic)
   const userRank = 42; 
   const userScore = user?.currentXP || 120;
   const isUserInTop = false;
@@ -45,7 +41,6 @@ const LeaderboardWidget: React.FC<LeaderboardWidgetProps> = ({ user }) => {
        
        <div className="absolute top-0 right-0 w-32 h-32 bg-brand-violet/5 rounded-full blur-3xl pointer-events-none" />
 
-       {/* Header */}
        <div className="flex items-center justify-between p-6 pb-2 relative z-10">
           <div className="flex items-center gap-2">
              <div className="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-900/20 flex items-center justify-center text-amber-500">
@@ -62,7 +57,6 @@ const LeaderboardWidget: React.FC<LeaderboardWidgetProps> = ({ user }) => {
           </button>
        </div>
 
-       {/* Tabs */}
        <div className="px-6 mb-6">
          <div className="flex p-1 bg-slate-100 dark:bg-black/30 rounded-xl border border-slate-200 dark:border-white/5">
             <button 
@@ -80,10 +74,8 @@ const LeaderboardWidget: React.FC<LeaderboardWidgetProps> = ({ user }) => {
          </div>
        </div>
 
-       {/* PODIUM (Visual & Fun) */}
        <div className="flex justify-center items-end gap-3 px-4 mb-4 relative z-10 border-b border-slate-100 dark:border-white/5 pb-6">
           
-          {/* 2nd Place */}
           {top2 && (
              <div className="flex flex-col items-center group w-1/3">
                 <div className="relative transition-transform group-hover:-translate-y-1">
@@ -97,7 +89,6 @@ const LeaderboardWidget: React.FC<LeaderboardWidgetProps> = ({ user }) => {
              </div>
           )}
 
-          {/* 1st Place */}
           {top1 && (
              <div className="flex flex-col items-center relative -top-3 group w-1/3">
                 <Crown size={20} className="text-amber-400 fill-amber-400 mb-1 animate-bounce drop-shadow-md" />
@@ -112,7 +103,6 @@ const LeaderboardWidget: React.FC<LeaderboardWidgetProps> = ({ user }) => {
              </div>
           )}
 
-          {/* 3rd Place */}
           {top3 && (
              <div className="flex flex-col items-center group w-1/3">
                 <div className="relative transition-transform group-hover:-translate-y-1">
@@ -127,9 +117,8 @@ const LeaderboardWidget: React.FC<LeaderboardWidgetProps> = ({ user }) => {
           )}
        </div>
 
-       {/* List (Rest) - Scrollable Area */}
        <div className="overflow-y-auto flex-1 px-4 space-y-2 pb-24 scrollbar-thin">
-          {others?.map((entry) => (
+          {others?.map((entry: LeaderboardEntry) => (
              <div key={entry.id} className="flex items-center gap-3 p-3 rounded-2xl bg-slate-50/50 dark:bg-white/5 border border-transparent hover:border-slate-200 dark:hover:border-white/10 transition-colors">
                 <span className="w-6 text-center text-xs font-bold text-slate-400">{entry.rank}</span>
                 <div className="w-8 h-8 rounded-full bg-white dark:bg-white/10 flex items-center justify-center text-slate-500 font-bold text-xs border border-slate-100 dark:border-white/5 shadow-sm">
@@ -143,7 +132,6 @@ const LeaderboardWidget: React.FC<LeaderboardWidgetProps> = ({ user }) => {
           ))}
        </div>
 
-       {/* YOUR POSITION */}
        {!isUserInTop && user && (
           <div className="absolute bottom-0 left-0 right-0 p-4 bg-white dark:bg-[#1A1F26] border-t border-slate-100 dark:border-white/5 shadow-[0_-10px_20px_-5px_rgba(0,0,0,0.1)] z-20">
              <div className="flex items-center justify-between mb-2">
@@ -174,7 +162,6 @@ const LeaderboardWidget: React.FC<LeaderboardWidgetProps> = ({ user }) => {
           </div>
        )}
 
-       {/* Info Modal (Gamified) */}
        {showInfo && (
           <div className="absolute inset-0 bg-white/95 dark:bg-[#1A1F26]/95 backdrop-blur-sm z-50 flex flex-col p-6 animate-fade-in">
              <div className="flex justify-between items-center mb-6">

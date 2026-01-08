@@ -1,9 +1,8 @@
-
 import React, { useEffect, useState, useRef } from 'react';
-import { UserProfile, LiturgyDay, PrayerIntention, RoutineItem } from '../types';
+import { UserProfile, LiturgyDay, PrayerIntention, RoutineItem } from '@/types';
 import { Flame, Sun, BookOpen, Heart, Sunrise, Moon, X, CheckCircle2, Compass, ArrowRight, Settings2, Eye, EyeOff, Calendar, Bell, MapPin, Check, ChevronDown, RefreshCw, Sparkles, LayoutGrid, Share2, Send, LogOut, MessageSquare, Shield } from 'lucide-react';
-import { generateDailyTheme, cleanAIOutput } from '../services/geminiService';
-import { fetchRealDailyLiturgy } from '../services/liturgyService';
+import { generateDailyTheme, cleanAIOutput } from '@/services/geminiService';
+import { fetchRealDailyLiturgy } from '@/services/liturgyService';
 import NotificationCenter from './NotificationCenter';
 import { ContactModal } from './LegalModals';
 import BrandLogo from './BrandLogo';
@@ -70,12 +69,8 @@ const Dashboard: React.FC<DashboardProps> = ({
   
   const hasLoadedRef = useRef(false);
 
-  // Lógica Sacramento Alert Refinada (Inovação C)
   const showConfessionAlert = () => {
-    // Se o usuário nunca se confessou ou faz muito tempo, o alerta é um "convite" suave
     if (user.confessionFrequency === 'never' || user.confessionFrequency === 'long_time') return true;
-    
-    // Se ele tem hábito, avisamos após 30 dias
     if (!user.lastConfessionAt) return true;
     const diff = Math.floor((new Date().getTime() - new Date(user.lastConfessionAt).getTime()) / (1000 * 60 * 60 * 24));
     return diff > 30;
@@ -222,7 +217,7 @@ const Dashboard: React.FC<DashboardProps> = ({
             <div className="p-5 border-b flex justify-between items-center"><div><p className="text-[10px] font-bold uppercase tracking-widest text-slate-500">Liturgia Diária</p><h3 className="text-sm font-bold">{liturgyData.saint || "Leituras do Dia"}</h3></div><button onClick={() => setShowLiturgyModal(false)} className="w-10 h-10 rounded-full bg-slate-100 dark:bg-white/10 flex items-center justify-center"><X size={20} /></button></div>
             <div className="flex bg-slate-50 dark:bg-black/20 p-1">
               {liturgyTabs.map((tab) => (
-                <button key={tab} onClick={() => setActiveLiturgyTab(tab as any)} className={`flex-1 py-2 text-[10px] font-bold rounded-lg transition-all ${activeLiturgyTab === tab ? 'bg-white dark:bg-white/10 text-brand-violet' : 'text-slate-400'}`}>
+                <button key={tab} onClick={() => setActiveLiturgyTab(tab as 'first' | 'psalm' | 'second' | 'gospel')} className={`flex-1 py-2 text-[10px] font-bold rounded-lg transition-all ${activeLiturgyTab === tab ? 'bg-white dark:bg-white/10 text-brand-violet' : 'text-slate-400'}`}>
                   {getTabLabel(tab)}
                 </button>
               ))}

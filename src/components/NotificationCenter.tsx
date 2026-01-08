@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { X, Bell, Heart, MessageCircle, Flame, Info } from 'lucide-react';
-import { Notification } from '../types';
-import { fetchNotifications, markNotificationAsRead } from '../services/databaseService';
-import { getSession } from '../services/authService';
+import { Notification } from '@/types';
+import { fetchNotifications, markNotificationAsRead } from '@/services/databaseService';
+import { getSession } from '@/services/authService';
 
 interface NotificationCenterProps {
   onClose: () => void;

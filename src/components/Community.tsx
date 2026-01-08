@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { PrayerIntention, CommunityChallenge, UserProfile } from '../types';
+import { PrayerIntention, CommunityChallenge, UserProfile } from '@/types';
 import { Heart, Image, Trophy, Plus, Flame } from 'lucide-react';
 import LiturgicalEvents from './LiturgicalEvents';
 import CommunityFeed from './CommunityFeed';

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { X, Shield, FileText, Heart, Mail, MessageSquare, CheckCircle2, Send, Loader2, AlertCircle } from 'lucide-react';
 import BrandLogo from './BrandLogo';
@@ -7,7 +6,6 @@ interface ModalProps {
   onClose: () => void;
 }
 
-// --- TERMOS DE USO ---
 export const TermsModal: React.FC<ModalProps> = ({ onClose }) => (
   <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
     <div className="absolute inset-0 bg-brand-dark/90 backdrop-blur-md animate-fade-in" onClick={onClose} />
@@ -39,7 +37,6 @@ export const TermsModal: React.FC<ModalProps> = ({ onClose }) => (
   </div>
 );
 
-// --- POLÍTICA DE PRIVACIDADE ---
 export const PrivacyModal: React.FC<ModalProps> = ({ onClose }) => (
   <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
     <div className="absolute inset-0 bg-brand-dark/90 backdrop-blur-md animate-fade-in" onClick={onClose} />
@@ -61,8 +58,6 @@ export const PrivacyModal: React.FC<ModalProps> = ({ onClose }) => (
   </div>
 );
 
-// --- SOBRE NÓS ---
-// Added missing AboutModal export to resolve LandingPage.tsx import error
 export const AboutModal: React.FC<ModalProps> = ({ onClose }) => (
   <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
     <div className="absolute inset-0 bg-brand-dark/90 backdrop-blur-md animate-fade-in" onClick={onClose} />
@@ -94,7 +89,6 @@ export const AboutModal: React.FC<ModalProps> = ({ onClose }) => (
   </div>
 );
 
-// --- CONTATO REAL ---
 export const ContactModal: React.FC<ModalProps> = ({ onClose }) => {
   const [formData, setFormData] = useState({
     name: '',

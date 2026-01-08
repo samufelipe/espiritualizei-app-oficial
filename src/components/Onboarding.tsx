@@ -1,9 +1,8 @@
-
-import React, { useState, useEffect } from 'react';
-import { OnboardingData } from '../types';
+import React, { useState } from 'react';
+import { OnboardingData } from '@/types';
 import { ArrowRight, Check, User, Clock, Zap, CloudRain, Heart, Coffee, Car, Moon, Sun, Anchor, Shield, Brain, Lightbulb, Mail, Phone, Lock, Eye, EyeOff, BookOpen, Users, Sword, Flower, Hammer, Crown, Wifi, AlertCircle, ArrowLeft, MessageSquare } from 'lucide-react';
 import BrandLogo from './BrandLogo';
-import { savePartialLead } from '../services/databaseService';
+import { savePartialLead } from '@/services/databaseService';
 
 interface OnboardingProps {
   onComplete: (data: OnboardingData) => Promise<void>;
@@ -104,7 +103,7 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete, onBack }) => {
        const cleanPassword = formData.password?.trim() || '';
 
        if (!/\S+@\S+\.\S+/.test(cleanEmail)) {
-          setFieldErrors(prev => ({ ...prev, email: 'Digite um e-mail válido.' }));
+          setFieldErrors((prev: { email?: string; phone?: string }) => ({ ...prev, email: 'Digite um e-mail válido.' }));
           return;
        }
        if (cleanPassword.length < 6) {
@@ -117,19 +116,19 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete, onBack }) => {
 
        try {
          await onComplete({ ...formData, email: cleanEmail, password: cleanPassword });
-       } catch (error: any) {
+       } catch (error: unknown) {
          setIsSubmitting(false);
-         setFieldErrors(prev => ({ ...prev, email: 'Erro no cadastro. Verifique os dados.' }));
+         setFieldErrors((prev: { email?: string; phone?: string }) => ({ ...prev, email: 'Erro no cadastro. Verifique os dados.' }));
        }
        return;
     }
     setStep(step + 1);
   };
 
-  const updateField = (field: keyof OnboardingData, value: any) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+  const updateField = (field: keyof OnboardingData, value: string) => {
+    setFormData((prev: OnboardingData) => ({ ...prev, [field]: value }));
     if (step >= 2 && step <= 8) {
-        setTimeout(() => setStep(prev => Math.min(prev + 1, TOTAL_STEPS)), 350); 
+        setTimeout(() => setStep((prev: number) => Math.min(prev + 1, TOTAL_STEPS)), 350); 
     }
   };
 
@@ -160,7 +159,7 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete, onBack }) => {
         <input
           type="text"
           value={formData.name}
-          onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+          onChange={(e) => setFormData((prev: OnboardingData) => ({ ...prev, name: e.target.value }))}
           onKeyDown={(e) => e.key === 'Enter' && formData.name.trim() && handleNext()}
           className="text-4xl font-bold text-brand-dark dark:text-white border-b-2 border-slate-200 dark:border-slate-700 focus:border-brand-violet outline-none py-4 bg-transparent placeholder:text-slate-300 w-full transition-all"
           placeholder="Digite seu nome..."
@@ -175,7 +174,7 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete, onBack }) => {
     </div>
   );
 
-  const renderSelectionStep = (title: string, subtitle: string, field: keyof OnboardingData, options: any[], hint?: any) => (
+  const renderSelectionStep = (title: string, subtitle: string, field: keyof OnboardingData, options: { val: string; label: string; desc: string; icon: React.ElementType }[], hint?: string) => (
     <div className="flex flex-col h-full pt-32 px-6 animate-slide-in-right overflow-y-auto pb-32">
       <div className="max-w-lg mx-auto w-full">
         <h2 className="text-2xl font-bold text-brand-dark dark:text-white mb-2">{title}</h2>
@@ -230,8 +229,8 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete, onBack }) => {
                      value={formData.email}
                      onBlur={handleCaptureLead}
                      onChange={(e) => {
-                        setFormData(prev => ({ ...prev, email: e.target.value }));
-                        if(fieldErrors.email) setFieldErrors(prev => ({...prev, email: undefined}));
+                        setFormData((prev: OnboardingData) => ({ ...prev, email: e.target.value }));
+                        if(fieldErrors.email) setFieldErrors((prev: { email?: string; phone?: string }) => ({...prev, email: undefined}));
                      }}
                      className={`w-full bg-slate-50 dark:bg-black/20 border rounded-xl py-3.5 pl-12 text-brand-dark dark:text-white placeholder:text-slate-400 outline-none transition-all font-medium ${fieldErrors.email ? 'border-red-500 focus:border-red-500' : 'border-slate-200 dark:border-white/10 focus:border-brand-violet'}`}
                      placeholder="seu@email.com"
@@ -327,7 +326,7 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete, onBack }) => {
             </div>
             <div className="flex gap-1 h-1">
               {Array.from({ length: TOTAL_STEPS }, (_, i) => i + 1).map(i => (
-                <div key={i} className={`rounded-full transition-all duration-500 flex-1 ${i <= step ? 'bg-brand-violet' : 'bg-slate-200 dark:bg-white/10'}`} />
+                <div key={i} className={`flex-1 rounded-full transition-all ${i <= step ? 'bg-brand-violet' : 'bg-slate-200 dark:bg-white/10'}`} />
               ))}
             </div>
           </div>

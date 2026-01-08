@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { X, PenLine, Save, BookOpen } from 'lucide-react';
-import { JournalEntry } from '../types';
-import { sendMessageToSpiritualDirector } from '../services/geminiService';
+import { JournalEntry } from '@/types';
+import { sendMessageToSpiritualDirector } from '@/services/geminiService';
 import BrandLogo from './BrandLogo';
 
 interface JournalModalProps {
@@ -20,12 +19,10 @@ const JournalModal: React.FC<JournalModalProps> = ({ mood, onClose, onSave }) =>
     
     setIsAnalyzing(true);
     
-    // Simple Analysis for Reflection
     let reflection = undefined;
     let verse = undefined;
 
     try {
-        // We reuse the chat service but frame it as a reflection request
         const prompt = `
           O usuário está sentindo: ${mood === 'peace' ? 'Paz/Consolação' : 'Desolação/Luta'}.
           Relato dele: "${content}".
