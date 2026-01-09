@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Share2, Sun, Sparkles } from 'lucide-react';
 import BrandLogo from './BrandLogo';
-import { generateDailyReflection } from '@/services/geminiService';
+import { generateDailyReflection } from '../services/geminiService';
 
 interface DailyInspirationProps {
   onClose: () => void;

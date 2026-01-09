@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { UserProfile, UserSettings } from '@/types';
+import { UserProfile, UserSettings } from '../types';
 import { User, Mail, Phone, Camera, Settings, LogOut, Crown, Calendar, Flame, Star, Edit2, Save, X } from 'lucide-react';
-import { updateUserProfile, uploadUserPhoto } from '@/services/databaseService';
+import { uploadImage } from '../services/databaseService';
+import { updateUserProfile } from '../services/authService';
 
 interface ProfileProps {
   user: UserProfile;
@@ -29,10 +30,12 @@ const Profile: React.FC<ProfileProps> = ({ user, onUpdateUser, onLogout, onOpenC
     
     setIsUploading(true);
     try {
-      const photoUrl = await uploadUserPhoto(user.id, file);
-      const updatedUser = { ...user, photoUrl };
-      await updateUserProfile(updatedUser);
-      onUpdateUser(updatedUser);
+      const photoUrl = await uploadImage(file, 'avatars');
+      if (photoUrl) {
+        const updatedUser = { ...user, photoUrl };
+        await updateUserProfile(updatedUser);
+        onUpdateUser(updatedUser);
+      }
     } catch (error) {
       console.error('Failed to upload photo:', error);
     } finally {

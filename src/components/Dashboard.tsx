@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { UserProfile, LiturgyDay, PrayerIntention, RoutineItem } from '@/types';
+import { UserProfile, LiturgyDay, PrayerIntention, RoutineItem } from '../types';
 import { Flame, Sun, BookOpen, Heart, Sunrise, Moon, X, CheckCircle2, Compass, ArrowRight, Settings2, Eye, EyeOff, Calendar, Bell, MapPin, Check, ChevronDown, RefreshCw, Sparkles, LayoutGrid, Share2, Send, LogOut, MessageSquare, Shield } from 'lucide-react';
-import { generateDailyTheme, cleanAIOutput } from '@/services/geminiService';
-import { fetchRealDailyLiturgy } from '@/services/liturgyService';
+import { generateDailyTheme, cleanAIOutput } from '../services/geminiService';
+import { fetchRealDailyLiturgy } from '../services/liturgyService';
 import NotificationCenter from './NotificationCenter';
 import { ContactModal } from './LegalModals';
 import BrandLogo from './BrandLogo';

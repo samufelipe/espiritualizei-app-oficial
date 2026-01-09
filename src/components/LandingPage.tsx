@@ -25,7 +25,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart, onLogin }) => {
     <div className="min-h-screen bg-gradient-to-b from-brand-dark via-brand-dark to-purple-950">
       {/* Header */}
       <header className="container mx-auto px-4 py-6 flex items-center justify-between">
-        <BrandLogo size="sm" />
+        <BrandLogo size={24} />
         <button
           onClick={onLogin}
           className="text-sm text-slate-300 hover:text-white transition-colors"
@@ -140,7 +140,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart, onLogin }) => {
       {/* Footer */}
       <footer className="container mx-auto px-4 py-8 border-t border-white/10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-          <BrandLogo size="sm" />
+          <BrandLogo size={24} />
           <p>© 2024 Espiritualizei. Todos os direitos reservados.</p>
           <div className="flex gap-4">
             <a href="#" className="hover:text-slate-300">Termos</a>

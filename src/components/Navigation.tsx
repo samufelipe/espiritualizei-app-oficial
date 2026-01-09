@@ -1,6 +1,6 @@
 import React from 'react';
 import { Home, CheckCircle2, Book, MapPin, Heart, User } from 'lucide-react';
-import { Tab } from '@/types';
+import { Tab } from '../types';
 
 interface NavigationProps {
   currentTab: Tab;

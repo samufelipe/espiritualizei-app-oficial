@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Lock, Eye, EyeOff, CheckCircle2, Loader2 } from 'lucide-react';
-import { updateUserPassword } from '@/services/authService';
+import { updateUserPassword } from '../services/authService';
 
 interface UpdatePasswordModalProps {
   onClose: () => void;

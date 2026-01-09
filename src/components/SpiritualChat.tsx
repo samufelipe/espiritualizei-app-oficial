@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ChatMessage, UserProfile } from '@/types';
-import { sendChatMessage } from '@/services/geminiService';
+import { ChatMessage, UserProfile } from '../types';
+import { sendMessageToAssistant as sendChatMessage } from '../services/geminiService';
 import { Send, Loader2, Sparkles, User, Bot, Trash2 } from 'lucide-react';
 
 interface SpiritualChatProps {
@@ -51,7 +51,7 @@ const SpiritualChat: React.FC<SpiritualChatProps> = ({ user, onClose }) => {
     setIsLoading(true);
 
     try {
-      const response = await sendChatMessage(inputText.trim(), messages, user);
+      const response = await sendChatMessage(inputText.trim(), user);
       
       const assistantMessage: ChatMessage = {
         id: `model-${Date.now()}`,

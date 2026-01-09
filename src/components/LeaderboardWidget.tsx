@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { LeaderboardData, UserProfile, LeaderboardEntry } from '@/types';
-import { fetchLeaderboard } from '@/services/databaseService';
+import { LeaderboardData, UserProfile, LeaderboardEntry } from '../types';
+import { fetchLeaderboard } from '../services/databaseService';
 import { Trophy, Flame, Zap, Crown, Info, X, ChevronUp, Star, ShieldCheck, Heart, User } from 'lucide-react';
 
 interface LeaderboardWidgetProps {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { OnboardingData } from '@/types';
+import { OnboardingData } from '../types';
 import { ArrowRight, Check, User, Clock, Zap, CloudRain, Heart, Coffee, Car, Moon, Sun, Anchor, Shield, Brain, Lightbulb, Mail, Phone, Lock, Eye, EyeOff, BookOpen, Users, Sword, Flower, Hammer, Crown, Wifi, AlertCircle, ArrowLeft, MessageSquare } from 'lucide-react';
 import BrandLogo from './BrandLogo';
-import { savePartialLead } from '@/services/databaseService';
+import { savePartialLead } from '../services/databaseService';
 
 interface OnboardingProps {
   onComplete: (data: OnboardingData) => Promise<void>;

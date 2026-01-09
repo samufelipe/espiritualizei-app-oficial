@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { X, PenLine, Save, BookOpen } from 'lucide-react';
-import { JournalEntry } from '@/types';
-import { sendMessageToSpiritualDirector } from '@/services/geminiService';
+import { JournalEntry } from '../types';
+import { sendMessageToSpiritualDirector } from '../services/geminiService';
 import BrandLogo from './BrandLogo';
 
 interface JournalModalProps {

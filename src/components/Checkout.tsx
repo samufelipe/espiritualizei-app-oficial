@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Check, ArrowRight, LogOut, RefreshCw, BookOpen, Users, Star, Lock } from 'lucide-react';
 import BrandLogo from './BrandLogo';
-import { getSession } from '@/services/authService';
+import { getSession } from '../services/authService';
 
 interface CheckoutProps {
   onSuccess: () => void;
