@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Sparkles, ArrowRight, Brain, Coffee, CloudRain, Shield, BookOpen, User, Check, RefreshCw, Calendar, ThumbsUp, ThumbsDown, Activity, Clock } from 'lucide-react';
-import { MonthlyReviewData } from '@/types';
+import { MonthlyReviewData } from '../types';
 
 interface MonthlyReviewModalProps {
   onClose: () => void;

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { PrayerIntention, CommunityChallenge, UserProfile } from '@/types';
+import { PrayerIntention, CommunityChallenge, UserProfile } from '../types';
 import { Heart, Image, Trophy, Plus, Flame } from 'lucide-react';
 import LiturgicalEvents from './LiturgicalEvents';
 import CommunityFeed from './CommunityFeed';
@@ -33,11 +33,7 @@ const Community: React.FC<CommunityProps> = ({
         
       {/* Liturgical Events Banner */}
       <div className="p-4 sm:p-6 pb-2">
-         <LiturgicalEvents 
-            challenges={challenges} 
-            onJoin={onJoinChallenge} 
-            onTestify={onTestify}
-         />
+         <LiturgicalEvents />
       </div>
 
       {/* Tabs */}

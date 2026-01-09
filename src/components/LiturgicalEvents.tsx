@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { LiturgyDay } from '@/types';
-import { fetchLiturgy } from '@/services/liturgyService';
+import { LiturgyDay } from '../types';
+import { fetchRealDailyLiturgy as fetchLiturgy } from '../services/liturgyService';
 import { Calendar, Book, Cross, Loader2, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface LiturgicalEventsProps {
@@ -29,7 +29,7 @@ const LiturgicalEvents: React.FC<LiturgicalEventsProps> = ({ onClose }) => {
     setLoading(true);
     setError(null);
     try {
-      const data = await fetchLiturgy(currentDate);
+      const data = await fetchLiturgy();
       setLiturgy(data);
     } catch (err) {
       setError('Não foi possível carregar a liturgia.');

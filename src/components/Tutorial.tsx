@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CheckCircle2, Book, Sparkles, ArrowRight, MapPin, User } from 'lucide-react';
 import BrandLogo from './BrandLogo';
-import { UserProfile } from '@/types';
+import { UserProfile } from '../types';
 
 interface TutorialProps {
   onComplete: () => void;

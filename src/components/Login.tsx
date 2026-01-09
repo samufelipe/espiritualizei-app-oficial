@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Lock, ArrowRight, ArrowLeft, Eye, EyeOff, KeyRound, CheckCircle2, Loader2, AlertCircle } from 'lucide-react';
 import BrandLogo from './BrandLogo';
-import { loginUser, sendPasswordResetEmail } from '@/services/authService';
+import { loginUser, sendPasswordResetEmail } from '../services/authService';
 
 interface LoginProps {
   onLogin: (user: any) => void;

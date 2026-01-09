@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Parish } from '@/types';
+import { Parish } from '../types';
 import { MapPin, Navigation, Star, Clock, ExternalLink, Loader2, Search, Church } from 'lucide-react';
-import { searchNearbyParishes } from '@/services/googlePlacesService';
+import { searchCatholicChurches as searchNearbyParishes } from '../services/googlePlacesService';
 
 interface ParishFinderProps {
   onClose?: () => void;
@@ -43,7 +43,7 @@ const ParishFinder: React.FC<ParishFinderProps> = ({ onClose }) => {
     setError(null);
 
     try {
-      const results = await searchNearbyParishes(location.lat, location.lng, searchQuery);
+      const results = await searchNearbyParishes(location.lat, location.lng);
       const sorted = results.sort((a: Parish, b: Parish) => {
         const distA = parseFloat(a.distance?.replace(/[^\d.]/g, '') || '999');
         const distB = parseFloat(b.distance?.replace(/[^\d.]/g, '') || '999');

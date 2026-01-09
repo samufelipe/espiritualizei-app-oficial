@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { RoutineItem, RoutineActionType } from '@/types';
+import { RoutineItem, RoutineActionType } from '../types';
 import { CheckCircle2, Circle, Sun, Moon, Coffee, Clock, Book, Cross, Flame, Heart, Shield, Music, Church, Star, Plus, Trash2 } from 'lucide-react';
 
 interface RoutineProps {

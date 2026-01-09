@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { KnowledgeItem } from '@/types';
+import { KnowledgeItem } from '../types';
 import { Book, Cross, Church, Heart, Clock, Search, ChevronRight, X, Star } from 'lucide-react';
 
 interface KnowledgeBaseProps {

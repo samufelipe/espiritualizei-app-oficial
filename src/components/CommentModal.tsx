@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { X, Send, MessageCircle } from 'lucide-react';
-import { Comment } from '@/types';
+import { Comment } from '../types';
 
 interface CommentModalProps {
   comments: Comment[];

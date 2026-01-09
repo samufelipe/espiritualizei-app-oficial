@@ -1,6 +1,6 @@
 import React from 'react';
 import { Home, CheckCircle2, Book, User, Heart, LogOut, MapPin } from 'lucide-react';
-import { Tab, UserProfile } from '@/types';
+import { Tab, UserProfile } from '../types';
 import BrandLogo from './BrandLogo';
 
 interface SidebarProps {
